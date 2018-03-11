@@ -1,5 +1,5 @@
 {
-  "name": "react-boilterplate",
+  "name": "react-boilerplate",
   "version": "0.0.0",
   "description": "React+Redux+Router app boilerplate with JEST+Enzyme testing",
   "main": "index.js",
