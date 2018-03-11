@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render correctly 1`] = `
+<article>
+  <h1>
+    404
+  </h1>
+  <p>
+    Can't find what you were after.
+  </p>
+  <Link
+    replace={false}
+    to="/"
+  >
+    Home
+  </Link>
+</article>
+`;
