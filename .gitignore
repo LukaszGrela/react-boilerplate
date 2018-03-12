@@ -46,6 +46,9 @@ typings/
 # Compiled SCSS files
 src/**/*.css
 
+# Compiled files
+public/dist/
+
 # Optional eslint cache
 .eslintcache
 
