@@ -1,0 +1,17 @@
+#Options All -Indexes
+Options -Indexes
+<Files *.php>
+    ForceType application/x-httpd-php5
+</Files>
+
+# BEGIN Boilerplate Widget
+<ifModule mod_rewrite.c>
+  Options +FollowSymLinks
+  IndexIgnore */*
+  RewriteEngine On
+  RewriteBase /path-to-app/
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule (.*) /path-to-app/index.html
+</ifModule>
+# END   Boilerplate Widget
