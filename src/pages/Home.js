@@ -9,5 +9,5 @@ class Home extends React.Component {
             </article>
         );
     }
-};
+}
 export default Home;

@@ -6,4 +6,4 @@ test('should render correctly', () => {
     const wrapper = shallow(<Page404 />);
 
     expect(wrapper).toMatchSnapshot();
-})
+});

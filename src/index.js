@@ -6,7 +6,6 @@ import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 
 const store = configureStore();
-console.log("index.js", store);
 
 ReactDOM.render(
     <Provider store={store}>
