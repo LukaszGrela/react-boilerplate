@@ -32,6 +32,7 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/
 build/Release
+release/
 
 # Dependency directories
 node_modules/
@@ -47,7 +48,7 @@ typings/
 src/**/*.css
 
 # Compiled files
-public/dist/
+public/dist/*
 
 # Optional eslint cache
 .eslintcache

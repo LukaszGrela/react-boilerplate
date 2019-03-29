@@ -1,56 +1,55 @@
+/* eslint-disable indent */
+/* eslint-disable no-undef */
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const CSSExtract = new ExtractTextPlugin('styles.css');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
 
-if(process.env.NODE_ENV === 'test'){}
-
-
-module.exports = (env, argv) => {
-  // console.log('argv',argv);
-  const isProd = env === 'production';
-  const CSSExtract = new ExtractTextPlugin('styles.css');
-  // console.log('isProd',isProd);
-  return {
-    entry: './src/index.js',
-    output: {
-      path: path.join(__dirname, 'public', 'dist'),
-      filename: 'bundle.js'
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.join(__dirname, 'public', 'dist'),
+    filename: 'bundle.js',
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
     },
-    module: {
-      rules: [{
-        loader: 'babel-loader',
-        test: /\.js$/,
-        exclude: /node_modules/
-      }, {
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+      {
         test: /\.s?css$/,
-        use: CSSExtract.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            },
-            {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      }]
-    },
-    plugins: [
-      CSSExtract
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
     ],
-    devtool: isProd ? 'source-map' : 'inline-source-map',
-    devServer: {
-      contentBase: path.join(__dirname, 'public'),
-      historyApiFallback: true,
-      publicPath: '/dist/',
-      host:'0.0.0.0',
-      port: 3000
-    }
-  }
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true,
+    publicPath: '/dist/',
+    host: '0.0.0.0',
+    port: 8080,
+  },
 };

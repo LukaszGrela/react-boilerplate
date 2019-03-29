@@ -8,5 +8,7 @@
     ],
     "snapshotSerializers": [
         "enzyme-to-json/serializer"
-    ]
+    ],
+    "verbose": true,
+    "testURL": "http://localhost/"
 }
